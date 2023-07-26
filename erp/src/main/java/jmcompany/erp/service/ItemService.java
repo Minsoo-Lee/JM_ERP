@@ -1,6 +1,8 @@
 package jmcompany.erp.service;
 
 import jmcompany.erp.domain.Item;
+import jmcompany.erp.domain.ItemForm;
+import jmcompany.erp.domain.ItemInfo;
 import jmcompany.erp.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ItemService {
 
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
     @Transactional
     public Long join(Item item) {
@@ -27,5 +29,16 @@ public class ItemService {
 
     public List<Item> findAll() {
         return itemRepository.findAll();
+    }
+
+    @Transactional
+    public void update(ItemForm form) {
+        Item item = itemRepository.findOne(form.getId());
+        item.setMadeBy(form.getMadeBy());
+        item.setItemInfo(new ItemInfo(form.getItemNum(), form.getItemName()));
+        item.setUnit(form.getUnit());
+        item.setCarryOver(form.getCarryOver());
+        item.setRealStock(form.getRealStock());
+        item.setRemarks(form.getRemarks());
     }
 }

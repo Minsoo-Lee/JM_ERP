@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}" />
+<body>
+
+<div class="container">
+    <div th:replace="~{fragments/bodyHeader :: bodyHeader}"/>
+    <a class="btn btn-secondary" href="/item/new">+</a>
+    <div>
+        <table class="table table-striped">
+            <thead> <tr>
+                <th>사입처</th>
+                <th>품번</th>
+                <th>품목명</th>
+                <th>단위</th>
+                <th>이월재고</th>
+                <th>실재고</th>
+                <th>비고</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${items}">
+                <td th:text="${item.madeBy}"></td>
+                <td th:text="${item.itemInfo?.itemNum}"></td>
+                <td th:text="${item.itemInfo?.itemName}"></td>
+                <td th:text="${item.unit}"></td>
+                <td th:text="${item.carryOver}"></td>
+                <td th:text="${item.realStock}"></td>
+                <td th:text="${item.remarks}"></td>
+                <td>
+                    <a href="#" th:href="@{/item/{id}/edit (id=${item.id})}" class="btn btn-primary" role="button">수정</a>
+                </td> </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"/>
+
+</div> <!-- /container -->
+
+</body>
+</html>

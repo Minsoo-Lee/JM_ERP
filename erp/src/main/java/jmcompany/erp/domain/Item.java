@@ -41,4 +41,16 @@ public class Item {
 
         return item;
     }
+
+    public static Item createNewItem(ItemForm form) {
+        Item item = new Item();
+        item.setItemInfo(new ItemInfo(form.getItemNum(), form.getItemName()));
+        item.setUnit(form.getUnit());
+        item.setCarryOver(form.getCarryOver());
+        item.setRealStock(form.getRealStock());
+        item.setMadeBy(form.getMadeBy());
+        item.setRemarks(form.getRemarks());
+
+        return item;
+    }
 }

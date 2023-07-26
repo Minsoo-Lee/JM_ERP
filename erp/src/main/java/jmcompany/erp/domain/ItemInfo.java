@@ -7,13 +7,13 @@ import lombok.Getter;
 @Getter
 public class ItemInfo {
 
-    private String item_num;
-    private String item_name;
+    private String itemNum;
+    private String itemName;
 
     public ItemInfo() { }
 
-    public ItemInfo(String item_num, String item_name) {
-        this.item_num = item_num;
-        this.item_name = item_name;
+    public ItemInfo(String itemNum, String itemName) {
+        this.itemNum = itemNum;
+        this.itemName = itemName;
     }
 }
