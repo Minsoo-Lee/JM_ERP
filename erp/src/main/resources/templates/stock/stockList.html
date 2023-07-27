@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}" />
+<body>
+
+<div class="container">
+    <div th:replace="~{fragments/bodyHeader :: bodyHeader}"/>
+    <a class="btn btn-secondary" href="/stock/new">+</a>
+    <div>
+        <table class="table table-striped">
+            <thead> <tr>
+                <th>품번</th>
+                <th>품목명</th>
+                <th>단위</th>
+                <th>이월재고</th>
+                <th>매입수</th>
+                <th>매출수</th>
+                <th>현재고</th>
+                <th>사입처</th>
+                <th>실재고</th>
+                <th>비고</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="stock : ${stocks}">
+                <td th:text="${stock.item.itemInfo?.itemNum}"></td>
+                <td th:text="${stock.item.itemInfo?.itemName}"></td>
+                <td th:text="${stock.item.unit}"></td>
+                <td th:text="${stock.item.carryOver}"></td>
+                <td th:text="${stock.buy}"></td>
+                <td th:text="${stock.sell}"></td>
+                <td th:text="${stock.stockAmount}"></td>
+                <td th:text="${stock.item.madeBy}"></td>
+                <td th:text="${stock.item.realStock}"></td>
+                <td th:text="${stock.item.remarks}"></td>
+                <td>
+                    <a href="#" th:href="@{/stock/{id}/edit (id=${stock.id})}" class="btn btn-primary" role="button">수정</a>
+                </td> </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"/>
+
+</div> <!-- /container -->
+
+</body>
+</html>

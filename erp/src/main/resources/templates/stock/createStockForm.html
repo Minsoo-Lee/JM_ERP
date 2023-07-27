@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}" />
+<body>
+
+<div class="container">
+    <div th:replace="~{fragments/bodyHeader :: bodyHeader}"/>
+
+    <form th:action="@{/stock/new}" th:object="${form}" method="post">
+        <div class="form-group">
+            <label th:for="itemNum">품번</label>
+            <input type="text" th:field="*{itemNum}" class="form-control" placeholder="품번을 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="itemName">품목명</label>
+            <input type="text" th:field="*{itemName}" class="form-control" placeholder="품목명을 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="unit">단위</label>
+            <input type="text" th:field="*{unit}" class="form-control" placeholder="단위를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="carryOver">이월재고</label>
+            <input type="number" th:field="*{carryOver}" class="form-control" placeholder="이월재고를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="buy">매입수</label>
+            <input type="text" th:field="*{buy}" class="form-control" placeholder="매입수를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="sell">매출수</label>
+            <input type="text" th:field="*{sell}" class="form-control" placeholder="매출수를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="stockAmount">현재고</label>
+            <input type="text" th:field="*{stockAmount}" class="form-control" placeholder="현재고를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="madeBy">사입처</label>
+            <input type="text" th:field="*{madeBy}" class="form-control" placeholder="사입처를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="realStock">실재고</label>
+            <input type="number" th:field="*{realStock}" class="form-control" placeholder="실재고를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="remarks">비고</label>
+            <input type="text" th:field="*{remarks}" class="form-control" placeholder="비고를 입력하세요">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br/>
+
+    <div th:replace="~{fragments/footer :: footer}" />
+
+</div> <!-- /container -->
+</body>
+</html>

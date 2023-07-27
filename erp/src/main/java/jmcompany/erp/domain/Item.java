@@ -1,7 +1,7 @@
 package jmcompany.erp.domain;
 
 import jakarta.persistence.*;
-import jmcompany.erp.form.ItemDto;
+import jmcompany.erp.dto.ItemDto;
 import lombok.Getter;
 import lombok.Setter;
 

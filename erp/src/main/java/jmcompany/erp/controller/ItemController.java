@@ -1,7 +1,7 @@
 package jmcompany.erp.controller;
 
 import jmcompany.erp.domain.Item;
-import jmcompany.erp.form.ItemDto;
+import jmcompany.erp.dto.ItemDto;
 import jmcompany.erp.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

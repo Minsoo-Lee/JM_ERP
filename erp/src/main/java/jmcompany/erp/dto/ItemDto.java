@@ -1,4 +1,4 @@
-package jmcompany.erp.form;
+package jmcompany.erp.dto;
 
 import jmcompany.erp.domain.Item;
 import lombok.Getter;
