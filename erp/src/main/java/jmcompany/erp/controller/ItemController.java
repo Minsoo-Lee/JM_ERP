@@ -1,7 +1,7 @@
 package jmcompany.erp.controller;
 
 import jmcompany.erp.domain.Item;
-import jmcompany.erp.domain.ItemForm;
+import jmcompany.erp.form.ItemDto;
 import jmcompany.erp.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -26,12 +26,12 @@ public class ItemController {
 
     @GetMapping("/new")
     public String createItemForm(Model model) {
-        model.addAttribute("form", new ItemForm());
+        model.addAttribute("form", new ItemDto());
         return "item/createItemForm";
     }
 
     @PostMapping("/new")
-    public String create(ItemForm form) {
+    public String create(ItemDto form) {
         Item item = Item.createNewItem(form);
         itemService.join(item);
         return "redirect:/item";
@@ -40,13 +40,13 @@ public class ItemController {
     @GetMapping("/{id}/edit")
     public String updateItemForm(@PathVariable("id") Long id, Model model) {
         Item item = itemService.findOne(id);
-        ItemForm form = ItemForm.createNewForm(item);
+        ItemDto form = ItemDto.createNewForm(item);
         model.addAttribute("form", form);
         return "item/updateItemForm";
     }
 
     @PostMapping("/{id}/edit")
-    public String updateItemForm(@PathVariable("id") Long id, ItemForm form) {
+    public String updateItemForm(@PathVariable("id") Long id, ItemDto form) {
         itemService.update(form);
         return "redirect:/item";
     }

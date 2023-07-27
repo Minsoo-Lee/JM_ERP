@@ -1,6 +1,7 @@
 package jmcompany.erp.domain;
 
 import jakarta.persistence.*;
+import jmcompany.erp.form.ItemDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,7 +43,7 @@ public class Item {
         return item;
     }
 
-    public static Item createNewItem(ItemForm form) {
+    public static Item createNewItem(ItemDto form) {
         Item item = new Item();
         item.setItemInfo(new ItemInfo(form.getItemNum(), form.getItemName()));
         item.setUnit(form.getUnit());

@@ -1,7 +1,7 @@
 package jmcompany.erp.service;
 
 import jmcompany.erp.domain.Item;
-import jmcompany.erp.domain.ItemForm;
+import jmcompany.erp.form.ItemDto;
 import jmcompany.erp.domain.ItemInfo;
 import jmcompany.erp.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +32,7 @@ public class ItemService {
     }
 
     @Transactional
-    public void update(ItemForm form) {
+    public void update(ItemDto form) {
         Item item = itemRepository.findOne(form.getId());
         item.setMadeBy(form.getMadeBy());
         item.setItemInfo(new ItemInfo(form.getItemNum(), form.getItemName()));
