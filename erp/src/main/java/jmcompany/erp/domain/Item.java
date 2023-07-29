@@ -31,9 +31,9 @@ public class Item {
     private Stock stock;
 
     //== create ==//
-    public static Item createItem(String item_num, String item_name, String unit, int carryOver, int real_stock, String madeBy, String remarks) {
+    public static Item createItem(ItemInfo itemInfo, String unit, int carryOver, int real_stock, String madeBy, String remarks) {
         Item item = new Item();
-        item.setItemInfo(new ItemInfo(item_num, item_name));
+        item.setItemInfo(itemInfo);
         item.setUnit(unit);
         item.setCarryOver(carryOver);
         item.setRealStock(real_stock);

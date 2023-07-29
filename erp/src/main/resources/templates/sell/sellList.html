@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}" />
+<body>
+
+<div class="container">
+    <div th:replace="~{fragments/bodyHeader :: bodyHeader}"/>
+    <a class="btn btn-secondary" href="/sell/new">+</a>
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>날짜</th>
+                <th>MadeBy</th>
+                <th>거래처</th>
+                <th>품번</th>
+                <th>품목명</th>
+                <th>단위</th>
+                <th>수량</th>
+                <th>공급단가</th>
+                <th>공급가</th>
+                <th>부가세</th>
+                <th>금액</th>
+                <th>비고</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="sell : ${sells}">
+                <td th:text="${sell.date}"></td>
+                <td th:text="${sell.madeBy}"></td>
+                <td th:text="${sell.customer}"></td>
+                <td th:text="${sell.itemInfo.itemNum}"></td>
+                <td th:text="${sell.itemInfo.itemName}"></td>
+                <td th:text="${sell.unit}"></td>
+                <td th:text="${sell.quantity}"></td>
+                <td th:text="${sell.unitPrice}"></td>
+                <td th:text="${sell.price}"></td>
+                <td th:text="${sell.vat}"></td>
+                <td th:text="${sell.totalPrice}"></td>
+                <td th:text="${sell.remarks}"></td>
+                <td>
+                    <a href="#" th:href="@{/sell/{id}/edit (id=${sell.id})}" class="btn btn-primary" role="button">수정</a>
+                </td> </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"/>
+
+</div> <!-- /container -->
+
+</body>
+</html>

@@ -35,6 +35,18 @@ public class StockService {
 
     @Transactional
     public void update(StockDto dto) {
-        stockRepository.update(dto);
+        Stock stock = findOne(dto.getId());
+        stock.setBuy(dto.getBuy());
+        stock.setSell(dto.getSell());
+        stock.setStockAmount(dto.getStockAmount());
+
+        Item item = new Item();
+        item.setItemInfo(new ItemInfo(dto.getItemNum(), dto.getItemName()));
+        item.setUnit(dto.getUnit());
+        item.setCarryOver(dto.getCarryOver());
+        item.setRealStock(dto.getRealStock());
+        item.setMadeBy(dto.getMadeBy());
+        item.setRemarks(dto.getRemarks());
+        stock.setItem(item);
     }
 }
